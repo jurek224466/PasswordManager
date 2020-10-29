@@ -185,6 +185,25 @@ namespace PasswordManager
         }
         public void ChangeEditPassword()
         {
+            SQLiteConnection sqlite2 = new SQLiteConnection(@"DataSource=" + filePath);
+            sqlite2.Open();
+            string sql = @"update user where password where id=1 ;";
+            SQLiteCommand command = new SQLiteCommand(sql, sqlite2);
+
+            command.Dispose();
+        }
+        public void LoginUser()
+        {
+            String user = "";
+            String password = "";
+            UserLogin = true;
+            SQLiteConnection sqlite2 = new SQLiteConnection(@"DataSource=" + filePath);
+            sqlite2.Open();
+            string sql = @"update user where user ;";
+            SQLiteCommand command = new SQLiteCommand(sql, sqlite2);
+            command.Parameters.Add(new SQLiteParameter("@user",user));
+            command.Parameters.Add(new SQLiteParameter("@password", password));
+            command.Dispose();
 
         }
 
