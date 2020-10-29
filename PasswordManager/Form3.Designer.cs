@@ -33,8 +33,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,13 +51,9 @@
             // 
             // textBox2
             // 
-            this.textBox2.AcceptsTab = true;
-            this.textBox2.AllowDrop = true;
-            this.textBox2.HideSelection = false;
             this.textBox2.Location = new System.Drawing.Point(246, 248);
-            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(272, 108);
+            this.textBox2.Size = new System.Drawing.Size(272, 22);
             this.textBox2.TabIndex = 1;
             // 
             // textBox3
@@ -81,70 +77,68 @@
             this.textBox5.Size = new System.Drawing.Size(272, 22);
             this.textBox5.TabIndex = 4;
             // 
-            // btnAdd
+            // button1
             // 
-            this.btnAdd.Location = new System.Drawing.Point(152, 405);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.button1.Location = new System.Drawing.Point(152, 405);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnCancel
+            // button2
             // 
-            this.btnCancel.Location = new System.Drawing.Point(271, 405);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.button2.Location = new System.Drawing.Point(271, 405);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(60, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 17);
+            this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 7;
-            this.label1.Text = "id";
+            this.label1.Text = "label1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(60, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 17);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Login";
+            this.label2.Text = "label2";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(60, 134);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 9;
-            this.label3.Text = "password";
+            this.label3.Text = "label3";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(60, 184);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 10;
-            this.label4.Text = "web_address";
+            this.label4.Text = "label4";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(60, 247);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 17);
+            this.label5.Size = new System.Drawing.Size(46, 17);
             this.label5.TabIndex = 11;
-            this.label5.Text = "descryption";
+            this.label5.Text = "label5";
             // 
             // Form3
             // 
@@ -156,8 +150,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -177,8 +171,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

@@ -52,11 +52,29 @@ namespace PasswordManager
             bool result = cryptography.CheckHash(value, checker);
             Console.WriteLine("Values bool "+result);
         }
+        /* public string SaveDataBase()
+{
+String filename = null;
+String filePath = null;
+String extension = null;
+SaveFileDialog saveFile = new SaveFileDialog();
+saveFile.Filter = "Text file (.txt)|*.txt|Database file (.db)|*.db | All files |*.*";
+saveFile.DefaultExt = "txt";
+if (saveFile.ShowDialog() == DialogResult.OK)
+{
 
-        private void BtnLogin_Click(object sender, EventArgs e)
-        {
+filename = saveFile.FileName;
+filePath = Path.GetFullPath(saveFile.FileName);
+String StrValue = "Ala ma kota";
+byte[] bytes = Encoding.ASCII.GetBytes(StrValue);
+String val = bytes.ToString();
+MemoryStream stream = new MemoryStream();
+stream.Write(bytes,0,StrValue.Length);
+StreamWriter fileStream = new StreamWriter(stream);
 
-        }
-
+}
+return filePath;
+}
+*/
     }
 }
