@@ -27,6 +27,8 @@ namespace PasswordManager
             DataBase dataBase = new DataBase();
            
             dataBase.CreateDataBaseFile();
+            Form4 form = new Form4();
+            form.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,42 +41,50 @@ namespace PasswordManager
         {
             Cryptography cryptography = new Cryptography();
              String value = "Ala ma kota i psa";
+            /*byte[] va = cryptography.generateHMAC(value);
+            string val= Encoding.UTF8.GetString(va, 0, va.Length);
+            Console.WriteLine("hmac " + val);*/
+            byte[] encrypt = cryptography.AESEncryption(value);
+            Console.WriteLine("Encrypt : " + Encoding.UTF8.GetString(encrypt, 0, encrypt.Length));
+            String result = cryptography.AESDecryption(encrypt);
+            Console.WriteLine("Result decrypt text : " + result);
+            cryptography.EncryptSHA512(value);
+           /* bool checkHash = cryptography.CheckHashSHA512(value, cryptography.EncryptSHA512(value));
+            Console.WriteLine("Check hash ", checkHash);*/
 
-            /* byte[] encrypt = cryptography.AESEncryption(value);
-             Console.WriteLine("Encrypt : " + Encoding.UTF8.GetString(encrypt, 0, encrypt.Length));
-             String result = cryptography.AESDecryption(encrypt);
-             Console.WriteLine("Result decrypt text : " + result);*/
-            /*    cryptography.EncryptSHA512(value);
-                bool checkHash = cryptography.CheckHash(value);
-                Console.WriteLine("Check hash ", checkHash);
-    */
-            byte[] checker= cryptography.EncryptSHA512(value);
+            /*byte[] checker= cryptography.EncryptSHA512(value);
             bool result = cryptography.CheckHash(value, checker);
-            Console.WriteLine("Values bool "+result);
+            Console.WriteLine("Values bool "+result);*/
         }
-        /* public string SaveDataBase()
-{
-String filename = null;
-String filePath = null;
-String extension = null;
-SaveFileDialog saveFile = new SaveFileDialog();
-saveFile.Filter = "Text file (.txt)|*.txt|Database file (.db)|*.db | All files |*.*";
-saveFile.DefaultExt = "txt";
-if (saveFile.ShowDialog() == DialogResult.OK)
-{
 
-filename = saveFile.FileName;
-filePath = Path.GetFullPath(saveFile.FileName);
-String StrValue = "Ala ma kota";
-byte[] bytes = Encoding.ASCII.GetBytes(StrValue);
-String val = bytes.ToString();
-MemoryStream stream = new MemoryStream();
-stream.Write(bytes,0,StrValue.Length);
-StreamWriter fileStream = new StreamWriter(stream);
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            DataBase dataBase = new DataBase();
+            String type = "";
+            if (checkHMAC.Checked)
+            {
+                type = "HMAC";
+            }
+            else
+            {
+                type = "SHA512";
+            }
+            dataBase.LoginUser(textLogin.Text, textPassword.Text, type);
+                       
 
-}
-return filePath;
-}
-*/
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Cryptography cryptography = new Cryptography();
+            String value = "Ala ma kota i psa";
+          
+            byte[] encrypt = cryptography.AESEncryption(value);
+            Console.WriteLine("Encrypt : " + Encoding.UTF8.GetString(encrypt, 0, encrypt.Length));
+            String result = cryptography.AESDecryption(encrypt);
+            Console.WriteLine("Result decrypt text : " + result);
+            cryptography.EncryptSHA512(value);
+           
+        }
     }
 }

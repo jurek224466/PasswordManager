@@ -15,56 +15,40 @@ namespace PasswordManager
     public class Cryptography
     {
 
-        
+
         private byte[] IV = new byte[16];
         private byte[] Key = new byte[32];
         String IVStr = "Hsifp85WXkRzgorV";
-        
-        String pepper = "r226rwf4wro3o23w4ww83i7ii43je44";
+
+        public String pepper = "r226rwf4wro3o23w4ww83i7ii43je44";
 
 
-        public byte[] EncryptSHA512(string message)
+        public string EncryptSHA512(string message)
         {
-
-            byte[] data = new byte[100];
-            data = Encoding.ASCII.GetBytes(message+pepper);
-            byte[] result = null;
-            SHA512 hash = new SHA512Managed();
-            result = hash.ComputeHash(data);
-            return result;
-        }
-     /*   public  string SHA512Hash(string value)
-        {
-            byte[] encryptedBytes;
-
-            using (var hashTool = new SHA512Managed())
+            using (SHA512 sha512 = SHA512.Create())
             {
-                encryptedBytes = hashTool.ComputeHash(System.Text.Encoding.UTF8.GetBytes(string.Concat(value)));
-                hashTool.Clear();
+                byte[] sourcecBytes = Encoding.UTF8.GetBytes(message + pepper);
+                byte[] hashBytes = sha512.ComputeHash(sourcecBytes);
+                string hash = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
+                return hash;
             }
 
-            return Convert.ToBase64String(encryptedBytes);
-        }*/
-        public bool CheckHash(string password,byte [] storeHash)
-        {
-            bool err = false;
-            using (SHA512 hmac =SHA512.Create())
-            {
 
-                
-                byte[] computeHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(password+pepper)); //plus salt
-                
-                for (int i = 0; i < storeHash.Length; i++)
-                {
-                    if (storeHash[i] != computeHash[i])
-                    {
-                        err = true;
-                    }
-                }
-                return err;
+        }
+
+        public  string GenerateHMACString(string inputString)
+        {
+            string secret_key = "A93reRTUJHsCuQSHR+L3GxqOJyDmQpCgps102ciuabc=";
+            var secretKeyByteArray = Convert.FromBase64String(secret_key);
+            using (HMAC hmac =new HMACSHA256(secretKeyByteArray))
+            {
+                byte[] sourceBytes = Encoding.UTF8.GetBytes(inputString);
+                byte[] hashBytes = hmac.ComputeHash(sourceBytes);
+                string hash = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
+                return hash;
             }
         }
-  
+    
 
 
         
@@ -84,9 +68,8 @@ namespace PasswordManager
             Console.WriteLine("IV" + IV);
             using (Aes aesAlg = Aes.Create())
                 {
-                    aesAlg.Key = Key;
-                    aesAlg.IV = IV;
-                    ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+                    
+                    ICryptoTransform encryptor = aesAlg.CreateEncryptor(Key,IV);
                     using (MemoryStream memoryStream = new MemoryStream())
                     {
                         using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
@@ -96,9 +79,10 @@ namespace PasswordManager
                                 writer.WriteLine(textvalue);
                             }
                             encrypted = memoryStream.ToArray();
-                        }
+                        return encrypted;
                     }
-                    return encrypted;
+                    }
+                   
                 } 
           
             
@@ -107,6 +91,10 @@ namespace PasswordManager
     
         public string AESDecryption(byte [] values)
         {
+
+            IV = Encoding.ASCII.GetBytes(IVStr);
+            String descrypt = "";
+            Key = GenerateSecreteKey();
             if (values== null || values.Length <= 0)
                 throw new ArgumentException("Brak wiadomości do zaszyfrowania");
             if (Key == null || Key.Length <= 0)
@@ -118,19 +106,21 @@ namespace PasswordManager
             {
                 aesAlg.Key = GenerateSecreteKey();
                 aesAlg.IV = IV;
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key,aesAlg.IV);
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(Key,IV);
                 using (MemoryStream memoryStream = new MemoryStream(values))
                 {
                     using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
                     {
                         using (StreamReader reader = new StreamReader(cryptoStream))
                         {
-                            decrypted = reader.ReadToEnd();
+                            descrypt = reader.ReadToEnd();
                         }
                       
                     }
                 }
+               
             }
+            decrypted= descrypt.Replace("\r\n", string.Empty);
             return decrypted;
 
         }
