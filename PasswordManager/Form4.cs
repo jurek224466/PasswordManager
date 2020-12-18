@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PasswordManager
 {
-    public partial class Form4 : Form
+    public partial class FormRegistry : Form
     {
-        public Form4()
+        public FormRegistry()
         {
             InitializeComponent();
         }
@@ -20,6 +20,7 @@ namespace PasswordManager
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             String type;
+           
             if (checkHMAC.Checked)
             {
                 type = "HMAC";
@@ -33,7 +34,8 @@ namespace PasswordManager
                 MessageBox.Show("Passwords is difference");
             }
             DataBase data = new DataBase();
-            data.addNewUser(textUser.Text, textPassword.Text,type);
+            data.CreateDataBaseFile(Files.filePath);
+            data.addNewUser(textUser.Text, textPassword.Text,type,Files.filePath);
             this.Close();
 
         }

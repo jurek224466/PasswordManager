@@ -13,28 +13,32 @@ using System.Windows.Markup;
 
 namespace PasswordManager
 {
-    public partial class Form1 : Form
+    public partial class FormLogin : Form
     {
         int FirstLoadDataBase = 0;
-
-        public Form1()
+        String filePath = "";
+        public FormLogin()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Files files = new Files();
             DataBase dataBase = new DataBase();
-           
-            dataBase.CreateDataBaseFile();
-            Form4 form = new Form4();
+            Files.filePath=files.SaveFile();
+            dataBase.GetDataBaseFile(Files.filePath);
+            FormRegistry form = new FormRegistry();
             form.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             DataBase dataBase = new DataBase();
-            dataBase.GetDataBaseFile();
+            Files files = new Files();
+            Files.filePath = files.OpenFile();
+            dataBase.GetDataBaseFile(Files.filePath);
+           
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -69,8 +73,27 @@ namespace PasswordManager
             {
                 type = "SHA512";
             }
-            dataBase.LoginUser(textLogin.Text, textPassword.Text, type);
-                       
+            if (Files.filePath != "")
+            {
+                bool login = dataBase.LoginUser(textLogin.Text, textPassword.Text, type, Files.filePath);
+                if (login == true)
+                {
+                    labelerror.ForeColor = Color.Black;
+                    labelerror.Text = "";
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                }
+                if (login == false)
+                {
+                    labelerror.ForeColor = Color.Red;
+                    labelerror.Text = "Incorrect login or password ";
+                }
+            }
+            else
+            {
+                labelerror.ForeColor = Color.Red;
+                labelerror.Text = "User didn't choose file";
+            }
 
         }
 

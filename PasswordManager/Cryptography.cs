@@ -36,18 +36,20 @@ namespace PasswordManager
 
         }
 
-        public  string GenerateHMACString(string inputString)
+        public string GenerateHMACString(string inputString)
         {
             string secret_key = "A93reRTUJHsCuQSHR+L3GxqOJyDmQpCgps102ciuabc=";
             var secretKeyByteArray = Convert.FromBase64String(secret_key);
-            using (HMAC hmac =new HMACSHA256(secretKeyByteArray))
+            using (HMAC hmac = new HMACSHA256(secretKeyByteArray))
             {
                 byte[] sourceBytes = Encoding.UTF8.GetBytes(inputString);
                 byte[] hashBytes = hmac.ComputeHash(sourceBytes);
-                string hash = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
+                string hash = Convert.ToBase64String(hashBytes);
                 return hash;
+
             }
         }
+        
     
 
 
