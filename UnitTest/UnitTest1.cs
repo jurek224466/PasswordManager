@@ -16,43 +16,44 @@ namespace UnitTest
         [DeploymentItem(@"x86\SQLite.Interop.dll", "x86")]
         [DeploymentItem(@"x64\SQLite.Interop.dll", "x64")]
         [TestMethod]
-        [TestCase("Ala ma kota")]
-        [TestCase("Kot ma psa")]
-        public void HMAC(string message)
+        [TestCase("Ala ma kota", "Ala ma kota")]
+        [TestCase("Kot ma psa","Kot ma psa")]
+        [TestCase("test","test")]
+        public void HMAC(string message,string message2)
         {
            /* String message = "ALa ma kota";*/
             Cryptography cryptography = new Cryptography();
             string value1 = cryptography.GenerateHMACString(message);
-            string value2 = cryptography.GenerateHMACString(message);
+            string value2 = cryptography.GenerateHMACString(message2);
             Assert.AreEqual(value1, value2);
 
         }
 
         [TestMethod]
-        [TestCase("Ala ma kota", "72227E2717B01EFCA106A7CBC34A82BF")]
-        [TestCase ("Ola ma psa", "0D045E3705818080B67E75EC1211CB30")]
-        public void TestAESEncrypt(string textvalue,string exceptedValue)
+        [TestCase("Ala ma kota", "ciJ+JxewHvyhBqfLw0qCvw==")]
+        [TestCase("Ola ma psa", "DQReNwWBgIC2fnXsEhHLMA==")]
+
+        public void TestAESEncrypt(string textvalue, string exceptedValue)
         {
-            /*String textvalue = "Ala ma kota";
+           /* String textvalue = "Ala ma kota";
             String exceptedValue = "72227E2717B01EFCA106A7CBC34A82BF";*/
             Cryptography cryptography = new Cryptography();
-            byte[] byteHash = cryptography.AESEncryption(textvalue);
-            string hashRel = BitConverter.ToString(byteHash).Replace("-", String.Empty);
-            Assert.AreEqual(exceptedValue, hashRel);
+            string hashRel = cryptography.AESEncryption(textvalue);
+           Assert.AreEqual(exceptedValue, hashRel);
         }
         [TestMethod]
         [TestCase("Ala ma kota", "Ala ma kota")]
         [TestCase("Ola ma psa", "Ola ma psa")]
-        public void TestAESDecrypt(string value,string result)
+        public void TestAESDecrypt(string value, string result)
         {
 
 
             Cryptography cryptography = new Cryptography();
-            /*String value = "Ala ma kota i psa";*/
-            byte[] encrypt = cryptography.AESEncryption(value);
-         /*   String result = cryptography.AESDecryption(encrypt);*/
-            Logger.LogMessage("Decrpt value", result);
-            Assert.AreEqual(value, result);
+           /* String value = "Ala ma kota i psa";*/
+            string encrypt = cryptography.AESEncryption(value);
+            String result2 = cryptography.AESDecryption(encrypt);
+            Logger.LogMessage("Decrpt value", result2);
+            Assert.AreEqual(value, result2);
 
 
         }
@@ -128,7 +129,7 @@ namespace UnitTest
         {
          
             DataBase dataBase = new DataBase();
-            bool result=dataBase.ChangeMainPassword("old", "new", "HMAC",filePath);
+            bool result=dataBase.ChangeMainPassword("testowy", "test2", "HMAC",filePath);
             Assert.IsTrue(result);
         }
         [TestMethod]
@@ -136,7 +137,7 @@ namespace UnitTest
         {
             
             DataBase dataBase = new DataBase();
-            bool login=dataBase.LoginUser("test", "test", "HMAC",filePath);
+            bool login=dataBase.LoginUser("testowy", "test2", "HMAC",filePath);
             Assert.IsTrue(login);
         }
         [TestMethod]
@@ -144,7 +145,7 @@ namespace UnitTest
         {
 
             DataBase dataBase = new DataBase();
-            bool test=dataBase.addNewUser("user", "pass", "HMAC", filePath);
+            bool test=dataBase.addNewUser("testowy", "test2", "HMAC", filePath);
             Assert.IsTrue(test);
 
         }
@@ -153,9 +154,9 @@ namespace UnitTest
         {
             DataBase dataBase = new DataBase();
             bool result=dataBase.AddPassword("Facebook", "test", "ala", "http://facebook.com", "facebook", filePath);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(result);
+            Assert.IsTrue(result);
         }
-      
+        
 
     }
 

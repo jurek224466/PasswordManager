@@ -54,7 +54,7 @@ namespace PasswordManager
 
 
         
-        public byte[] AESEncryption(string textvalue)
+        public string AESEncryption(string textvalue)
         {
 
             IV = Encoding.ASCII.GetBytes(IVStr);
@@ -81,7 +81,7 @@ namespace PasswordManager
                                 writer.WriteLine(textvalue);
                             }
                             encrypted = memoryStream.ToArray();
-                        return encrypted;
+                        return Convert.ToBase64String(encrypted);
                     }
                     }
                    
@@ -91,9 +91,9 @@ namespace PasswordManager
             
         } 
     
-        public string AESDecryption(byte [] values)
+        public string AESDecryption(string encrypt)
         {
-
+            byte[] values = Convert.FromBase64String(encrypt);
             IV = Encoding.ASCII.GetBytes(IVStr);
             String descrypt = "";
             Key = GenerateSecreteKey();

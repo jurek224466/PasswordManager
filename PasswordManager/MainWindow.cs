@@ -12,7 +12,8 @@ namespace PasswordManager
 {
     public partial class MainWindow : Form
     {
-        public static byte[] HashPassword;
+       /* public static byte[] HashPassword;*/
+        public static string HashPassword;
         public MainWindow()
         {
             InitializeComponent();
@@ -48,9 +49,10 @@ namespace PasswordManager
         {
             
             string hashPass = listView1.SelectedItems[0].SubItems[2].Text;
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(hashPass);
+        
             Cryptography c = new Cryptography();
-            string decodePassword = c.AESDecryption(passwordBytes);
+     
+            string decodePassword = c.AESDecryption(hashPass);
             listView1.SelectedItems[0].SubItems[2].Text = decodePassword;
             String password = listView1.SelectedItems[0].SubItems[3].Text;
 
@@ -63,10 +65,10 @@ namespace PasswordManager
             DataBase dataBase = new DataBase();
 
             HashPassword = c.AESEncryption(textPassword.Text);
-            Console.WriteLine("HAshcode 1" + Encoding.ASCII.GetString(HashPassword));
+          /*  Console.WriteLine("HAshcode 1" + Encoding.ASCII.GetString(HashPassword));*/
 
-            dataBase.AddPassword(textTitle.Text, textlogin.Text, Encoding.ASCII.GetString(HashPassword), textWebAddress.Text, textDesc.Text, Files.filePath);
-            listView1.Items.Add(new ListViewItem(new string[] { textTitle.Text, textlogin.Text, Encoding.UTF8.GetString(HashPassword), textWebAddress.Text, textDesc.Text }));
+            dataBase.AddPassword(textTitle.Text, textlogin.Text, HashPassword, textWebAddress.Text, textDesc.Text, Files.filePath);
+            listView1.Items.Add(new ListViewItem(new string[] { textTitle.Text, textlogin.Text,HashPassword, textWebAddress.Text, textDesc.Text }));
 
             string decodePassword = c.AESDecryption(HashPassword);
             Console.WriteLine("Odszyfrowane hasło: " + decodePassword);

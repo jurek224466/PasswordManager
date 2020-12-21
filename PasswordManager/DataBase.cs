@@ -197,6 +197,11 @@ namespace PasswordManager
                     
                     Console.WriteLine("No rows found");
                 }
+                if (reader.Read() == null)
+                {
+                    Console.WriteLine("Null data");
+                    return null;
+                }
                
                 reader.Close();
                 connection.Close();
@@ -207,6 +212,7 @@ namespace PasswordManager
             catch (Exception e)
             {
                 Console.WriteLine("Exception " + e.Message);
+                return null;
             }
             return new String[] { title, user, password, descryption, web_address };
 
@@ -251,12 +257,13 @@ namespace PasswordManager
             {
                 using (SQLiteConnection connection = new SQLiteConnection(@"DataSource=" + filePath))
                 {
-                    byte[] hashPass = cryptography.AESEncryption(password);
-                    string passwordStr = Encoding.ASCII.GetString(hashPass);
+                    string hashPass = cryptography.AESEncryption(password);
+                    /*string passwordStr = Encoding.ASCII.GetString(hashPass);*/
                     SQLiteCommand command = new SQLiteCommand("insert into passwords (title,login,password,web_address,description) values (@title, @login, @password, @web,@desc)", connection);
                     connection.Open();
                     command.Parameters.AddWithValue("@login", login);
-                    command.Parameters.AddWithValue("@password", passwordStr);
+                    /* command.Parameters.AddWithValue("@password", passwordStr);*/
+                    command.Parameters.AddWithValue("@password", hashPass);
                     command.Parameters.AddWithValue("@login", login);
                     command.Parameters.AddWithValue("@title", title);
                     command.Parameters.AddWithValue("@web", webAddress);
@@ -384,11 +391,11 @@ namespace PasswordManager
                     }
 
                     reader.Close();
-                  /*  command.Dispose();*/
+                    command.Dispose();
 
 
 
-                }
+            }
               
             return UserLogin;
 
