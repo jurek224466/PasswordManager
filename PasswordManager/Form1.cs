@@ -45,20 +45,15 @@ namespace PasswordManager
         {
             Cryptography cryptography = new Cryptography();
              String value = "Ala ma kota i psa";
-            /*byte[] va = cryptography.generateHMAC(value);
-            string val= Encoding.UTF8.GetString(va, 0, va.Length);
-            Console.WriteLine("hmac " + val);*/
-            byte[] encrypt = cryptography.AESEncryption(value);
-            Console.WriteLine("Encrypt : " + Encoding.UTF8.GetString(encrypt, 0, encrypt.Length));
+
+            /*  byte[] encrypt = cryptography.AESEncryption(value);*/
+            string encrypt = cryptography.AESEncryption(value);
+            /*  Console.WriteLine("Encrypt : " + Encoding.UTF8.GetString(encrypt, 0, encrypt.Length));*/
+            /* String result = cryptography.AESDecryption(encrypt);*/
             String result = cryptography.AESDecryption(encrypt);
             Console.WriteLine("Result decrypt text : " + result);
             cryptography.EncryptSHA512(value);
-           /* bool checkHash = cryptography.CheckHashSHA512(value, cryptography.EncryptSHA512(value));
-            Console.WriteLine("Check hash ", checkHash);*/
-
-            /*byte[] checker= cryptography.EncryptSHA512(value);
-            bool result = cryptography.CheckHash(value, checker);
-            Console.WriteLine("Values bool "+result);*/
+         
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -101,9 +96,10 @@ namespace PasswordManager
         {
             Cryptography cryptography = new Cryptography();
             String value = "Ala ma kota i psa";
-          
-            byte[] encrypt = cryptography.AESEncryption(value);
-            Console.WriteLine("Encrypt : " + Encoding.UTF8.GetString(encrypt, 0, encrypt.Length));
+
+            /*  byte[] encrypt = cryptography.AESEncryption(value);*/
+            string encrypt = cryptography.AESEncryption(value);
+       /*     Console.WriteLine("Encrypt : " + Encoding.UTF8.GetString(encrypt, 0, encrypt.Length));*/
             String result = cryptography.AESDecryption(encrypt);
             Console.WriteLine("Result decrypt text : " + result);
             cryptography.EncryptSHA512(value);

@@ -287,12 +287,11 @@ namespace PasswordManager
             // 
             // webAddressField
             // 
-            this.webAddressField.DisplayIndex = 4;
+            this.webAddressField.Text = "Web Address";
             this.webAddressField.Width = 187;
             // 
             // descryptionField
             // 
-            this.descryptionField.DisplayIndex = 3;
             this.descryptionField.Text = "Descryption";
             this.descryptionField.Width = 208;
             // 
