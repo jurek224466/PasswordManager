@@ -5,16 +5,17 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PasswordManager
 {
-    public partial class MainWindow : Form
+    public partial class shareLogin : Form
     {
        /* public static byte[] HashPassword;*/
         public static string HashPassword;
-        public MainWindow()
+        public shareLogin()
         {
             InitializeComponent();
         }
@@ -82,6 +83,33 @@ namespace PasswordManager
             {
                 listView1.Items.Add(dataBase.list[i]);
             }
+           
+            SharePasswords sharePasswords = new SharePasswords();
+            sharePasswords.CreateDataBaseShare(Files.filePath);
+        }
+
+        private void btnEvent_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShare_Click(object sender, EventArgs e)
+        {
+
+            DateTime currentTime = DateTime.Now;
+            String title=listView1.SelectedItems[0].SubItems[0].Text;
+            String login= listView1.SelectedItems[0].SubItems[1].Text;
+            String password = listView1.SelectedItems[0].SubItems[2].Text;
+            String descrpition= listView1.SelectedItems[0].SubItems[3].Text;
+            String webAddress = listView1.SelectedItems[0].SubItems[4].Text;
+            SharePasswords sharePasswords = new SharePasswords();
+            sharePasswords.AddPassword(Files.filePath, login, password, webAddress, descrpition, currentTime, "user", false,title);
+           /* sharePasswords.UpdatePassword();*/
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

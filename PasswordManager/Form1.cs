@@ -24,10 +24,8 @@ namespace PasswordManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Files files = new Files();
-            DataBase dataBase = new DataBase();
-            Files.filePath=files.SaveFile();
-            dataBase.GetDataBaseFile(Files.filePath);
+            
+          /*  dataBase.GetDataBaseFile(Files.filePath);*/
             FormRegistry form = new FormRegistry();
             form.Show();
         }
@@ -75,7 +73,7 @@ namespace PasswordManager
                 {
                     labelerror.ForeColor = Color.Black;
                     labelerror.Text = "";
-                    MainWindow main = new MainWindow();
+                    shareLogin main = new shareLogin();
                     main.Show();
                 }
                 if (login == false)
@@ -104,6 +102,14 @@ namespace PasswordManager
             Console.WriteLine("Result decrypt text : " + result);
             cryptography.EncryptSHA512(value);
            
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            Files files = new Files();
+            Files.filePath = files.SaveFile();
+            DataBase data = new DataBase();
+            data.CreateDataBaseFile(Files.filePath);
         }
     }
 }

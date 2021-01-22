@@ -18,11 +18,14 @@ namespace PasswordManager
        
         String exceptionMessage = "";
         public List<ListViewItem> list = new List<ListViewItem>();
-      /* public static String filePath { get; set; }*/
+        /* public static String filePath { get; set; }*/
+        public static String loginCurrentUser;
         public Boolean UserLogin = false;
-        static String userName { get; set; }
+      
+        public static String userName { get; set; }
         static byte[] encryptPass { get; set; }
         public int Version { get; private set; }
+        public String salt = "";
 
         public bool CreateDataBaseFile(String filePath)
         {
@@ -39,7 +42,7 @@ namespace PasswordManager
                 command.ExecuteReader();
                 /*command.Dispose();*/
                 string sql2 = @"CREATE TABLE passwords (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(256),
-                    login VARCHAR(256),password VARCHAR(256),web_address VARCHAR(256),description VARCHAR(256));";
+                    login VARCHAR(256),password VARCHAR(256),web_address VARCHAR(256),description VARCHAR(256),owner varchar(256));";
                 SQLiteCommand command2 = new SQLiteCommand(sql2, sqlite2);
                 command2.ExecuteReader();
                 command2.Dispose();
@@ -60,8 +63,9 @@ namespace PasswordManager
         }
       
        
-        public void GetDataBaseFile(String filePath)
+        public bool GetDataBaseFile(String filePath)
         {
+            bool getDatabase = false;
             try
             {
                // string filePath = OpenDataBaseFile();
@@ -85,7 +89,7 @@ namespace PasswordManager
                         dataBaseData.Salt = reader[3].ToString();
                         active.Add(dataBaseData);
                         Console.WriteLine($"{reader[1].ToString()} and {reader[2].ToString()} and {reader[3].ToString()}");
-
+                        getDatabase = true;
 
                     }
                 }
@@ -93,6 +97,7 @@ namespace PasswordManager
                 {
                     Console.WriteLine("No rows found");
                 }
+
                     reader.Close();
                 connection.Close();
                 
@@ -102,8 +107,10 @@ namespace PasswordManager
             catch (Exception e)
             {
                 Console.WriteLine("Exception " + e.Message);
+                getDatabase = false;
                 
             }
+            return getDatabase;
         }
         public bool GetUserData(String filePath)
         {
@@ -115,7 +122,7 @@ namespace PasswordManager
                 connection.Open();
                 string[] result = new string[7];
                 string[] result2 = new string[7];
-                string sql = "select * from passwords";
+                string sql = "select * from passwords where ownner='"+DataBase.loginCurrentUser+"'";
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
                 SQLiteDataReader reader = command.ExecuteReader();
                 List<DataBaseData> active = new List<DataBaseData>();
@@ -169,8 +176,9 @@ namespace PasswordManager
                 connection.Open();
                 string[] result = new string[7];
                 string[] result2 = new string[7];
-                string sql = "select * from passwords";
+                string sql = "select * from passwords where owner='"+DataBase.loginCurrentUser+"'";
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
+             /*   command.Parameters.AddWithValue("@login", user);*/
                 SQLiteDataReader reader = command.ExecuteReader();
                 List<DataBaseData> active = new List<DataBaseData>();
                 if (reader.HasRows)
@@ -259,7 +267,7 @@ namespace PasswordManager
                 {
                     string hashPass = cryptography.AESEncryption(password);
                     /*string passwordStr = Encoding.ASCII.GetString(hashPass);*/
-                    SQLiteCommand command = new SQLiteCommand("insert into passwords (title,login,password,web_address,description) values (@title, @login, @password, @web,@desc)", connection);
+                    SQLiteCommand command = new SQLiteCommand("insert into passwords (title,login,password,web_address,description,owner) values (@title, @login, @password, @web,@desc,@owner)", connection);
                     connection.Open();
                     command.Parameters.AddWithValue("@login", login);
                     /* command.Parameters.AddWithValue("@password", passwordStr);*/
@@ -268,6 +276,7 @@ namespace PasswordManager
                     command.Parameters.AddWithValue("@title", title);
                     command.Parameters.AddWithValue("@web", webAddress);
                     command.Parameters.AddWithValue("@desc", descryption);
+                    command.Parameters.AddWithValue("@owner",DataBase.loginCurrentUser);
                     command.ExecuteScalar();
                     Console.WriteLine(command.CommandText);
                     /*  connection.Close();*/
@@ -276,10 +285,12 @@ namespace PasswordManager
                 }
             }catch(SqliteException sqlite)
             {
+                Console.Error.WriteLine(sqlite.Message);
                 return false;
             }
             catch(Exception excpe)
             {
+                Console.Error.WriteLine(excpe.Message);
                 return false;
             }
         }
@@ -331,7 +342,7 @@ namespace PasswordManager
                     sqlite2.Open();
 
                     string[] result = new string[5];
-                    string sql = "select * from user";
+                    string sql = "select * from user where login='"+user+"'";
                     userName = user;
                     SQLiteCommand command = new SQLiteCommand(sql, sqlite2);
                     SQLiteDataReader reader = command.ExecuteReader();
@@ -352,6 +363,7 @@ namespace PasswordManager
                     String hashPassword = result[2].ToString();
                     String passHMAC = cryptography.GenerateHMACString(password);
                     String loginDbUSer = result[1].ToString();
+                    loginCurrentUser = loginDbUSer;
                     Console.WriteLine("Passwords: form: " + passHMAC +"and database:  "+hashPassword);
 
                     if (String.Equals(hashPassword, passHMAC) && String.Equals(loginDbUSer, user) && user!=null && password!=null)
@@ -374,6 +386,7 @@ namespace PasswordManager
                         String hashPassword = result[2].ToString();
                         String passSHA = cryptography.EncryptSHA512(password);
                         String loginDbUSer = result[1].ToString();
+                    loginCurrentUser = loginDbUSer;
                         if (String.Equals(hashPassword, passSHA) && String.Equals(loginDbUSer, user) && user != null && password != null)
                         {
                             UserLogin = true;

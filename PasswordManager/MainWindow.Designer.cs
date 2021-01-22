@@ -1,7 +1,7 @@
 ﻿
 namespace PasswordManager
 {
-    partial class MainWindow
+    partial class shareLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -57,13 +57,33 @@ namespace PasswordManager
             this.webAddressField = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.descryptionField = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.errorLabel = new System.Windows.Forms.Label();
+            this.btnEvent = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sharedListview = new System.Windows.Forms.ListView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.shareTitle = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.sharePassword = new System.Windows.Forms.TextBox();
+            this.shareDesc = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.shareWebAddress = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnShare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(1017, 331);
+            this.label8.Location = new System.Drawing.Point(1037, 235);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(105, 20);
             this.label8.TabIndex = 67;
@@ -71,7 +91,7 @@ namespace PasswordManager
             // 
             // textWebAddress
             // 
-            this.textWebAddress.Location = new System.Drawing.Point(1021, 371);
+            this.textWebAddress.Location = new System.Drawing.Point(1041, 275);
             this.textWebAddress.Margin = new System.Windows.Forms.Padding(2);
             this.textWebAddress.Multiline = true;
             this.textWebAddress.Name = "textWebAddress";
@@ -82,7 +102,7 @@ namespace PasswordManager
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(761, 331);
+            this.label7.Location = new System.Drawing.Point(781, 235);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 20);
             this.label7.TabIndex = 65;
@@ -92,7 +112,7 @@ namespace PasswordManager
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(618, 331);
+            this.label6.Location = new System.Drawing.Point(638, 235);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 20);
             this.label6.TabIndex = 64;
@@ -100,7 +120,7 @@ namespace PasswordManager
             // 
             // textDesc
             // 
-            this.textDesc.Location = new System.Drawing.Point(765, 371);
+            this.textDesc.Location = new System.Drawing.Point(785, 275);
             this.textDesc.Margin = new System.Windows.Forms.Padding(2);
             this.textDesc.Multiline = true;
             this.textDesc.Name = "textDesc";
@@ -109,7 +129,7 @@ namespace PasswordManager
             // 
             // textPassword
             // 
-            this.textPassword.Location = new System.Drawing.Point(621, 371);
+            this.textPassword.Location = new System.Drawing.Point(641, 275);
             this.textPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(130, 20);
@@ -165,7 +185,7 @@ namespace PasswordManager
             // 
             // btnShowPassword
             // 
-            this.btnShowPassword.Location = new System.Drawing.Point(621, 404);
+            this.btnShowPassword.Location = new System.Drawing.Point(333, 315);
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.Size = new System.Drawing.Size(118, 36);
             this.btnShowPassword.TabIndex = 56;
@@ -177,7 +197,7 @@ namespace PasswordManager
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(478, 331);
+            this.label5.Location = new System.Drawing.Point(498, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 20);
             this.label5.TabIndex = 55;
@@ -187,7 +207,7 @@ namespace PasswordManager
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(327, 331);
+            this.label4.Location = new System.Drawing.Point(347, 235);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 20);
             this.label4.TabIndex = 54;
@@ -195,14 +215,14 @@ namespace PasswordManager
             // 
             // textlogin
             // 
-            this.textlogin.Location = new System.Drawing.Point(470, 371);
+            this.textlogin.Location = new System.Drawing.Point(490, 275);
             this.textlogin.Name = "textlogin";
             this.textlogin.Size = new System.Drawing.Size(137, 20);
             this.textlogin.TabIndex = 53;
             // 
             // textTitle
             // 
-            this.textTitle.Location = new System.Drawing.Point(331, 371);
+            this.textTitle.Location = new System.Drawing.Point(351, 275);
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(100, 20);
             this.textTitle.TabIndex = 52;
@@ -210,7 +230,7 @@ namespace PasswordManager
             // ButtonInsert
             // 
             this.ButtonInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ButtonInsert.Location = new System.Drawing.Point(765, 457);
+            this.ButtonInsert.Location = new System.Drawing.Point(471, 322);
             this.ButtonInsert.Name = "ButtonInsert";
             this.ButtonInsert.Size = new System.Drawing.Size(95, 29);
             this.ButtonInsert.TabIndex = 51;
@@ -264,7 +284,7 @@ namespace PasswordManager
             this.listView1.Location = new System.Drawing.Point(314, 53);
             this.listView1.Name = "listView1";
             this.listView1.ShowItemToolTips = true;
-            this.listView1.Size = new System.Drawing.Size(859, 244);
+            this.listView1.Size = new System.Drawing.Size(1140, 142);
             this.listView1.TabIndex = 46;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.UseWaitCursor = true;
@@ -304,11 +324,202 @@ namespace PasswordManager
             this.errorLabel.TabIndex = 68;
             this.errorLabel.Text = "label9";
             // 
-            // MainWindow
+            // btnEvent
+            // 
+            this.btnEvent.Location = new System.Drawing.Point(1357, 235);
+            this.btnEvent.Name = "btnEvent";
+            this.btnEvent.Size = new System.Drawing.Size(75, 23);
+            this.btnEvent.TabIndex = 69;
+            this.btnEvent.Text = "Look Event ";
+            this.btnEvent.UseVisualStyleBackColor = true;
+            this.btnEvent.Click += new System.EventHandler(this.btnEvent_Click);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Title";
+            this.columnHeader1.Width = 308;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Login";
+            this.columnHeader2.Width = 155;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Password";
+            this.columnHeader3.Width = 78;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Web Address";
+            this.columnHeader4.Width = 187;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Descryption";
+            this.columnHeader5.Width = 208;
+            // 
+            // sharedListview
+            // 
+            this.sharedListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.sharedListview.Enabled = false;
+            this.sharedListview.HideSelection = false;
+            this.sharedListview.LabelEdit = true;
+            this.sharedListview.LabelWrap = false;
+            this.sharedListview.Location = new System.Drawing.Point(314, 453);
+            this.sharedListview.Name = "sharedListview";
+            this.sharedListview.ShowItemToolTips = true;
+            this.sharedListview.Size = new System.Drawing.Size(1140, 142);
+            this.sharedListview.TabIndex = 70;
+            this.sharedListview.UseCompatibleStateImageBehavior = false;
+            this.sharedListview.UseWaitCursor = true;
+            this.sharedListview.View = System.Windows.Forms.View.Details;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button3.Location = new System.Drawing.Point(785, 761);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(95, 29);
+            this.button3.TabIndex = 71;
+            this.button3.Text = "Insert";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // shareTitle
+            // 
+            this.shareTitle.Location = new System.Drawing.Point(351, 675);
+            this.shareTitle.Name = "shareTitle";
+            this.shareTitle.Size = new System.Drawing.Size(100, 20);
+            this.shareTitle.TabIndex = 72;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(490, 675);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(137, 20);
+            this.textBox4.TabIndex = 73;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.Location = new System.Drawing.Point(347, 635);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(38, 20);
+            this.label13.TabIndex = 74;
+            this.label13.Text = "Title";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(498, 635);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 20);
+            this.label12.TabIndex = 75;
+            this.label12.Text = "Login";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(641, 708);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 36);
+            this.button2.TabIndex = 76;
+            this.button2.Text = "Show Passwords";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // sharePassword
+            // 
+            this.sharePassword.Location = new System.Drawing.Point(641, 675);
+            this.sharePassword.Margin = new System.Windows.Forms.Padding(2);
+            this.sharePassword.Name = "sharePassword";
+            this.sharePassword.Size = new System.Drawing.Size(130, 20);
+            this.sharePassword.TabIndex = 77;
+            // 
+            // shareDesc
+            // 
+            this.shareDesc.Location = new System.Drawing.Point(785, 675);
+            this.shareDesc.Margin = new System.Windows.Forms.Padding(2);
+            this.shareDesc.Multiline = true;
+            this.shareDesc.Name = "shareDesc";
+            this.shareDesc.Size = new System.Drawing.Size(242, 58);
+            this.shareDesc.TabIndex = 78;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label11.Location = new System.Drawing.Point(638, 635);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 20);
+            this.label11.TabIndex = 79;
+            this.label11.Text = "Password";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label10.Location = new System.Drawing.Point(781, 635);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 20);
+            this.label10.TabIndex = 80;
+            this.label10.Text = "Descryption";
+            // 
+            // shareWebAddress
+            // 
+            this.shareWebAddress.Location = new System.Drawing.Point(1041, 675);
+            this.shareWebAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.shareWebAddress.Multiline = true;
+            this.shareWebAddress.Name = "shareWebAddress";
+            this.shareWebAddress.Size = new System.Drawing.Size(177, 41);
+            this.shareWebAddress.TabIndex = 81;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label9.Location = new System.Drawing.Point(1037, 635);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(105, 20);
+            this.label9.TabIndex = 82;
+            this.label9.Text = "Web Address";
+            // 
+            // btnShare
+            // 
+            this.btnShare.Location = new System.Drawing.Point(586, 326);
+            this.btnShare.Name = "btnShare";
+            this.btnShare.Size = new System.Drawing.Size(102, 23);
+            this.btnShare.TabIndex = 83;
+            this.btnShare.Text = "Share";
+            this.btnShare.UseVisualStyleBackColor = true;
+            this.btnShare.Click += new System.EventHandler(this.btnShare_Click);
+            // 
+            // shareLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1511, 668);
+            this.ClientSize = new System.Drawing.Size(1779, 919);
+            this.Controls.Add(this.btnShare);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.shareWebAddress);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.shareDesc);
+            this.Controls.Add(this.sharePassword);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.shareTitle);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.sharedListview);
+            this.Controls.Add(this.btnEvent);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textWebAddress);
@@ -332,7 +543,7 @@ namespace PasswordManager
             this.Controls.Add(this.textBoxNewPasswordRepeat);
             this.Controls.Add(this.textBoxNewPassword);
             this.Controls.Add(this.listView1);
-            this.Name = "MainWindow";
+            this.Name = "shareLogin";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
@@ -370,5 +581,25 @@ namespace PasswordManager
         private System.Windows.Forms.ColumnHeader webAddressField;
         private System.Windows.Forms.ColumnHeader descryptionField;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Button btnEvent;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ListView sharedListview;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox shareTitle;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox sharePassword;
+        private System.Windows.Forms.TextBox shareDesc;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox shareWebAddress;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnShare;
     }
 }

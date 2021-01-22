@@ -23,7 +23,7 @@ namespace PasswordManager
         {
             FormLogin form1 = new FormLogin();
             form1.Close();
-            MainWindow form2 = new MainWindow();
+            shareLogin form2 = new shareLogin();
             form2.Show();
         }
     }

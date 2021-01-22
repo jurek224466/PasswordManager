@@ -34,7 +34,7 @@ namespace PasswordManager
                 MessageBox.Show("Passwords is difference");
             }
             DataBase data = new DataBase();
-            data.CreateDataBaseFile(Files.filePath);
+          
             data.addNewUser(textUser.Text, textPassword.Text,type,Files.filePath);
             this.Close();
 

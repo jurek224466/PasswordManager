@@ -39,6 +39,7 @@
             this.checkSHA512 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.labelerror = new System.Windows.Forms.Label();
+            this.SaveDB = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSaveFile
@@ -48,7 +49,7 @@
             this.btnSaveFile.Name = "btnSaveFile";
             this.btnSaveFile.Size = new System.Drawing.Size(56, 19);
             this.btnSaveFile.TabIndex = 0;
-            this.btnSaveFile.Text = "Save";
+            this.btnSaveFile.Text = "AddUser";
             this.btnSaveFile.UseVisualStyleBackColor = true;
             this.btnSaveFile.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -65,7 +66,7 @@
             // 
             // textLogin
             // 
-            this.textLogin.Location = new System.Drawing.Point(145, 78);
+            this.textLogin.Location = new System.Drawing.Point(94, 107);
             this.textLogin.Margin = new System.Windows.Forms.Padding(2);
             this.textLogin.Name = "textLogin";
             this.textLogin.Size = new System.Drawing.Size(331, 20);
@@ -73,7 +74,7 @@
             // 
             // textPassword
             // 
-            this.textPassword.Location = new System.Drawing.Point(145, 124);
+            this.textPassword.Location = new System.Drawing.Point(95, 167);
             this.textPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(331, 20);
@@ -82,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(85, 78);
+            this.label1.Location = new System.Drawing.Point(36, 107);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
@@ -92,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 124);
+            this.label2.Location = new System.Drawing.Point(32, 167);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
@@ -101,7 +102,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(148, 194);
+            this.buttonLogin.Location = new System.Drawing.Point(118, 228);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(56, 19);
@@ -115,7 +116,7 @@
             this.checkHMAC.AutoSize = true;
             this.checkHMAC.Checked = true;
             this.checkHMAC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkHMAC.Location = new System.Drawing.Point(239, 31);
+            this.checkHMAC.Location = new System.Drawing.Point(340, 37);
             this.checkHMAC.Margin = new System.Windows.Forms.Padding(2);
             this.checkHMAC.Name = "checkHMAC";
             this.checkHMAC.Size = new System.Drawing.Size(57, 17);
@@ -126,7 +127,7 @@
             // checkSHA512
             // 
             this.checkSHA512.AutoSize = true;
-            this.checkSHA512.Location = new System.Drawing.Point(318, 31);
+            this.checkSHA512.Location = new System.Drawing.Point(419, 37);
             this.checkSHA512.Margin = new System.Windows.Forms.Padding(2);
             this.checkSHA512.Name = "checkSHA512";
             this.checkSHA512.Size = new System.Drawing.Size(66, 17);
@@ -155,11 +156,22 @@
             this.labelerror.Size = new System.Drawing.Size(0, 13);
             this.labelerror.TabIndex = 11;
             // 
+            // SaveDB
+            // 
+            this.SaveDB.Location = new System.Drawing.Point(187, 27);
+            this.SaveDB.Name = "SaveDB";
+            this.SaveDB.Size = new System.Drawing.Size(75, 23);
+            this.SaveDB.TabIndex = 12;
+            this.SaveDB.Text = "Save ";
+            this.SaveDB.UseVisualStyleBackColor = true;
+            this.SaveDB.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 410);
+            this.Controls.Add(this.SaveDB);
             this.Controls.Add(this.labelerror);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.checkSHA512);
@@ -192,6 +204,7 @@
         private System.Windows.Forms.CheckBox checkSHA512;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label labelerror;
+        private System.Windows.Forms.Button SaveDB;
     }
 }
 
