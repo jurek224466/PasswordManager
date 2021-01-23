@@ -58,12 +58,6 @@ namespace PasswordManager
             this.descryptionField = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.errorLabel = new System.Windows.Forms.Label();
             this.btnEvent = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sharedListview = new System.Windows.Forms.ListView();
             this.button3 = new System.Windows.Forms.Button();
             this.shareTitle = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -77,6 +71,12 @@ namespace PasswordManager
             this.shareWebAddress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnShare = new System.Windows.Forms.Button();
+            this.sharedListview = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label8
@@ -334,52 +334,6 @@ namespace PasswordManager
             this.btnEvent.UseVisualStyleBackColor = true;
             this.btnEvent.Click += new System.EventHandler(this.btnEvent_Click);
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Title";
-            this.columnHeader1.Width = 308;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Login";
-            this.columnHeader2.Width = 155;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Password";
-            this.columnHeader3.Width = 78;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Web Address";
-            this.columnHeader4.Width = 187;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Descryption";
-            this.columnHeader5.Width = 208;
-            // 
-            // sharedListview
-            // 
-            this.sharedListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.sharedListview.Enabled = false;
-            this.sharedListview.HideSelection = false;
-            this.sharedListview.LabelEdit = true;
-            this.sharedListview.LabelWrap = false;
-            this.sharedListview.Location = new System.Drawing.Point(314, 453);
-            this.sharedListview.Name = "sharedListview";
-            this.sharedListview.ShowItemToolTips = true;
-            this.sharedListview.Size = new System.Drawing.Size(1140, 142);
-            this.sharedListview.TabIndex = 70;
-            this.sharedListview.UseCompatibleStateImageBehavior = false;
-            this.sharedListview.UseWaitCursor = true;
-            this.sharedListview.View = System.Windows.Forms.View.Details;
-            // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -500,11 +454,57 @@ namespace PasswordManager
             this.btnShare.UseVisualStyleBackColor = true;
             this.btnShare.Click += new System.EventHandler(this.btnShare_Click);
             // 
+            // sharedListview
+            // 
+            this.sharedListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.sharedListview.HideSelection = false;
+            this.sharedListview.LabelEdit = true;
+            this.sharedListview.LabelWrap = false;
+            this.sharedListview.Location = new System.Drawing.Point(292, 419);
+            this.sharedListview.Name = "sharedListview";
+            this.sharedListview.ShowItemToolTips = true;
+            this.sharedListview.Size = new System.Drawing.Size(1140, 142);
+            this.sharedListview.TabIndex = 84;
+            this.sharedListview.UseCompatibleStateImageBehavior = false;
+            this.sharedListview.UseWaitCursor = true;
+            this.sharedListview.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Title";
+            this.columnHeader1.Width = 308;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Login";
+            this.columnHeader2.Width = 155;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Password";
+            this.columnHeader3.Width = 78;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Web Address";
+            this.columnHeader4.Width = 187;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Descryption";
+            this.columnHeader5.Width = 208;
+            // 
             // shareLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1779, 919);
+            this.Controls.Add(this.sharedListview);
             this.Controls.Add(this.btnShare);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.shareWebAddress);
@@ -518,7 +518,6 @@ namespace PasswordManager
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.shareTitle);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.sharedListview);
             this.Controls.Add(this.btnEvent);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.label8);
@@ -582,12 +581,6 @@ namespace PasswordManager
         private System.Windows.Forms.ColumnHeader descryptionField;
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Button btnEvent;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ListView sharedListview;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox shareTitle;
         private System.Windows.Forms.TextBox textBox4;
@@ -601,5 +594,11 @@ namespace PasswordManager
         private System.Windows.Forms.TextBox shareWebAddress;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnShare;
+        private System.Windows.Forms.ListView sharedListview;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

@@ -20,8 +20,7 @@ namespace PasswordManager
                 /*string cs = @"URI=file:C:\Users\Jurek\test.db";*/
                 SQLiteConnection sqlite2 = new SQLiteConnection(@"DataSource=" + filePath);
                 sqlite2.Open();
-                string sql = @"CREATE TABLE data_base_event (id INTEGER PRIMARY KEY AUTOINCREMENT, id_user VARCHAR(30),
-                    );";
+                string sql = @"CREATE TABLE  events (id INTEGER PRIMARY KEY AUTOINCREMENT, id_user VARCHAR(30),name_method varchar(50));";
                 SQLiteCommand command = new SQLiteCommand(sql, sqlite2);
                 command.ExecuteReader();
                 sqlite2.Close();
@@ -128,6 +127,8 @@ namespace PasswordManager
         }
     }
     }
+
+
 
 
 }

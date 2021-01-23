@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PasswordManager
 {
@@ -23,7 +24,7 @@ namespace PasswordManager
         private String login;
         private String password;
         private string exceptionMessage;
-
+       public List<ListViewItem> shareList = new List<ListViewItem>();
 
         public SharePasswords(long id, string owner, string consumer, DateTime date, bool editableBidirectional, string title, string webAddress, string description, string login, string password)
         {
@@ -166,7 +167,7 @@ namespace PasswordManager
             }
         }
 
-        public string[] GetSharedPasswords(String filePath = "")
+        public void GetSharedPasswords(String filePath = "")
         {
             String title = "";
             String user = "";
@@ -182,7 +183,7 @@ namespace PasswordManager
                 connection.Open();
                 string[] result = new string[7];
                 string[] result2 = new string[7];
-                string sql = "select * from passwords where consumer='" + DataBase.loginCurrentUser + "'";
+                string sql = "select * from share_password where consumer='" + DataBase.loginCurrentUser + "'";
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
                 /*   command.Parameters.AddWithValue("@login", user);*/
                 SQLiteDataReader reader = command.ExecuteReader();
@@ -199,7 +200,7 @@ namespace PasswordManager
                         web_address = reader[4].ToString();
                         descryption = reader[5].ToString();
                         string strippedString = new string(password.Where(c => c <= sbyte.MaxValue).ToArray());
-
+                        shareList.Add(new ListViewItem(new String[] { title, user, strippedString + "\\\u00B9", descryption, web_address }));
 
 
 
@@ -214,21 +215,21 @@ namespace PasswordManager
                 if (reader.Read() == null)
                 {
                     Console.WriteLine("Null data");
-                    return null;
+                   /* return null;*/
                 }
 
                 reader.Close();
                 connection.Close();
 
-                return new String[] { title, user, password, descryption, web_address };
+               /* return new String[] { title, user, password, descryption, web_address };*/
 
             }
             catch (Exception e)
             {
                 Console.WriteLine("Exception " + e.Message);
-                return null;
+               /* return null;*/
             }
-            return new String[] { title, user, password, descryption, web_address };
+          /*  return new String[] { title, user, password, descryption, web_address };*/
 
         }
 

@@ -12,19 +12,26 @@ namespace PasswordManager
 {
     public partial class ShareForm : Form
     {
+        public static String shareUser="";
         public ShareForm()
         {
             InitializeComponent();
+            btnCancel.DialogResult = DialogResult.Cancel;
+            
         }
 
         private void btnadd_Click(object sender, EventArgs e)
         {
             SharePasswords sharePasswords = new SharePasswords();
-            if (textBox1.Text != "")
-            {
-                sharePasswords.Consumer = textBox1.Text;
-                this.Close();
-            }
+              if (ShareUSer.Text != "")
+                {
+                    sharePasswords.Consumer = ShareUSer.Text;
+                    shareUser = ShareUSer.Text;
+                    this.Close();
+                }
+
+            
+            
            
         }
 

@@ -77,15 +77,25 @@ namespace PasswordManager
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            
             DataBase dataBase = new DataBase();
             dataBase.GetPasswords(Files.filePath);
             for (int i = 0; i < dataBase.list.Count; i++)
             {
                 listView1.Items.Add(dataBase.list[i]);
             }
-           
             SharePasswords sharePasswords = new SharePasswords();
             sharePasswords.CreateDataBaseShare(Files.filePath);
+            sharePasswords.GetSharedPasswords(Files.filePath);
+            for (int i = 0; i <sharePasswords.shareList.Count; i++)
+            {
+                sharedListview.Items.Add(sharePasswords.shareList[i]);
+            }
+
+
+
+
+
         }
 
         private void btnEvent_Click(object sender, EventArgs e)
@@ -103,7 +113,9 @@ namespace PasswordManager
             String descrpition= listView1.SelectedItems[0].SubItems[3].Text;
             String webAddress = listView1.SelectedItems[0].SubItems[4].Text;
             SharePasswords sharePasswords = new SharePasswords();
-            sharePasswords.AddPassword(Files.filePath, login, password, webAddress, descrpition, currentTime, "user", false,title);
+            ShareForm shareForm = new ShareForm();
+            shareForm.ShowDialog();
+            sharePasswords.AddPassword(Files.filePath, login, password, webAddress, descrpition, currentTime,ShareForm.shareUser, false,title);
            /* sharePasswords.UpdatePassword();*/
         }
 

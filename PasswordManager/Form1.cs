@@ -56,6 +56,8 @@ namespace PasswordManager
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            AppLogsEvents appLogsEvents = new AppLogsEvents();
+            appLogsEvents.AddTable(Files.filePath);
             DataBase dataBase = new DataBase();
             String type = "";
             if (checkHMAC.Checked)
@@ -111,5 +113,7 @@ namespace PasswordManager
             DataBase data = new DataBase();
             data.CreateDataBaseFile(Files.filePath);
         }
+
+       
     }
 }
